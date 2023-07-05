@@ -58,21 +58,52 @@ def get_menu_choice():
     return choice
 
 
-def look_up():
-    pass
+def look_up(mycontacts):
+    name = input('Введите имя: ')
+    print(mycontacts.get(name, 'Это имя не найдено.'))
 
 
-def add():
-    pass
+def add(mycontacts):
+    name = input('Имя: ')
+    phone = input('Телефон: ')
+    email = input('Электронный адрес: ')
+
+    entry = contact.Contact(name, phone, email)
+
+    if name not in contact:
+        mycontacts[name] = entry
+        print('Контакт добавлен.')
+    else:
+        print('Такой контакт уже существует.')
 
 
-def change():
-    pass
+def change(mycontacts):
+    name = input('Введите имя: ')
+
+    if name in mycontacts:
+        phone = input('Введите новый номер телефона: ')
+        email = input('Введите новый адрес электронной почты: ')
+        entry = contact.Contact(name, phone, email)
+        mycontacts[name] = entry
+        print('Контакт обновлен.')
+    else:
+        print('Это имя не найдено.')
 
 
-def delete():
-    pass
+def delete(mycontacts):
+    name = input('Введите имя: ')
+    if name in contact:
+        del mycontacts[name]
+        print('Контакт удален.')
+    else:
+        print('Такой контакт не найден.')
 
 
-def save_contacts():
-    pass
+def save_contacts(mycontacts):
+    output_file = open(FILENAME, 'wb')
+    pickle.dump(mycontacts, output_file)
+    output_file.close()
+
+
+if __name__ == '__main__':
+    main()
