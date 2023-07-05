@@ -9,6 +9,7 @@ QUIT = 5
 
 FILENAME = 'cntacts_dat'
 
+
 def main():
     mycontacts = load_contacts()
     choice = 0
@@ -27,8 +28,51 @@ def main():
 
     save_contacts(mycontacts)
 
+
 def load_contacts():
-    pass
+    try:
+        input_file = open(FILENAME, 'rb')
+        contact_dct = pickle.load(input_file)
+        input_file.close()
+    except IOError:
+        contact_dct = {}
+
+    return contact_dct
+
 
 def get_menu_choice():
+    print()
+    print('Меню')
+    print('----------------------')
+    print('1. Найти контакт')
+    print('2. Добавить контакт')
+    print('3. Изменить контакт')
+    print('4. Удалить контакт')
+    print('5. Выйти из программы')
+    print()
+
+    choice = int(input('Введите выбранный пункт: '))
+    while choice < LOOK_UP > QUIT:
+        choice = int(input('Введите выбранный пункт: '))
+
+    return choice
+
+
+def look_up():
+    pass
+
+
+def add():
+    pass
+
+
+def change():
+    pass
+
+
+def delete():
+    pass
+
+
+def save_contacts():
     pass
