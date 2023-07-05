@@ -24,7 +24,3 @@ class Contact:
 
     def __str__(self):
         return f'Имя: {self.__name}\nТелефон: {self.__phone}\nЭлектронная почта: {self.__email}'
-
-
-c1 = Contact('Tom', '6-44-90', 'tom@email.com')
-print(c1.__str__())
