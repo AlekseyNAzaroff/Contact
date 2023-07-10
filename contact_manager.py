@@ -69,7 +69,7 @@ def add(mycontacts):
 
     entry = contact.Contact(name, phone, email)
 
-    if name not in contact:
+    if name not in mycontacts:
         mycontacts[name] = entry
         print('Контакт добавлен.')
     else:
